@@ -55,7 +55,7 @@ program
 
     try {
       const logOptions = {
-        logger: (...args) => console.log(...args),
+        logger: console.log,
         logLevel
       };
 
@@ -65,17 +65,7 @@ program
         process.env
       );
 
-      provider.messageDestination = {
-        info(...args) {
-          console.log(...args);
-        },
-        warn(...args) {
-          console.warn(...args);
-        },
-        error(...args) {
-          console.error(...args);
-        }
-      };
+      console.log(provider.messageDestination);
 
       if (program.listProviders) {
         console.log(
