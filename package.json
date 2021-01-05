@@ -26,7 +26,7 @@
     "commander": "^6.2.1",
     "github-repository-provider": "^7.21.11",
     "local-repository-provider": "^7.0.72",
-    "npm-template-sync": "^10.7.14",
+    "@template-tools/template-sync": "^10.7.15",
     "remove-sensible-values": "^1.0.9"
   },
   "devDependencies": {

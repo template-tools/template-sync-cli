@@ -8,7 +8,7 @@ import GithubProvider from "github-repository-provider";
 import BitbucketProvider from "bitbucket-repository-provider";
 import LocalProvider from "local-repository-provider";
 import AggregationProvider from "aggregation-repository-provider";
-import { Context } from "npm-template-sync";
+import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
 
 process.on("uncaughtException", e => console.error(e));
