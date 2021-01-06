@@ -65,8 +65,6 @@ program
         process.env
       );
 
-      console.log(provider.messageDestination);
-
       if (program.listProviders) {
         console.log(
           Array.from(
