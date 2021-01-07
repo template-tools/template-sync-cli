@@ -77,6 +77,10 @@ program
         return;
       }
 
+      if(branches === undefined) {
+        branches = [];
+      }
+
       if (branches.length === 0 || branches[0] === ".") {
         const pkg = JSON.parse(
           await readFile("package.json", defaultEncodingOptions)
