@@ -6,7 +6,7 @@
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Ftemplate-tools%2Ftemplate-sync-cli%2Fbadge&style=flat)](https://actions-badge.atrox.dev/template-tools/template-sync-cli/goto)
 [![Coverage Status](https://coveralls.io/repos/template-tools/template-sync-cli/badge.svg)](https://coveralls.io/github/template-tools/template-sync-cli)
 
-## template-sync-cli
+## @template-tools/sync-cli
 
 Keep repository in sync with its template.
 
@@ -381,9 +381,9 @@ Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Gl
 With [npm](http://npmjs.org) do:
 
 ```shell
-npm install -g npm-template-sync
+npm install -g @template-tools/sync-cli
 
-# npm-template-sync --help
+# template-sync --help
 ```
 
 # license
