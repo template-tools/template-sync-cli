@@ -27,7 +27,7 @@ let templates = [];
 program
   .usage(description)
   .version(version)
-  .command("[branches...]", "branches to merge")
+  .arguments("[branches...]", "branches to merge")
   .option("--dry", "do not create branch/pull request")
   .option("--trace", "log level trace")
   .option("--debug", "log level debug")
@@ -49,16 +49,12 @@ program
     "template repository",
     value => (templates = templates.concat(value))
   )
-  .option("-u, --dump-template <directory>", "copy aggregated template entries")
-  .action(async (commander, branches) => {
-    const logLevel = program.trace ? "trace" : program.debug ? "debug" : "info";
+  .option("-u, --dump-template <directory>", "extract aggregated template entries")
+  .action(async (branches) => {
+    const options = program.opts();
+    const logLevel = options.trace ? "trace" : options.debug ? "debug" : "info";
 
     try {
-      const logOptions = {
-        logger: console.log,
-        logLevel
-      };
-
       const provider = AggregationProvider.initialize(
         [GithubProvider, BitbucketProvider, LocalProvider],
         properties,
@@ -77,10 +73,6 @@ program
         return;
       }
 
-      if(branches === undefined) {
-        branches = [];
-      }
-
       if (branches.length === 0 || branches[0] === ".") {
         const pkg = JSON.parse(
           await readFile("package.json", defaultEncodingOptions)
@@ -90,22 +82,19 @@ program
 
       for (const branch of branches) {
         const context = new Context(provider, branch, {
-          template: program.template,
-          dry: program.dry,
-          track: program.track,
-          create: program.create,
+          ...options,
           properties,
-          ...logOptions
-        });
+          logLevel
+          });
 
         await context.initialize();
 
-        if (program.dumpTemplate) {
-          await context.template.dump(program.dumpTemplate);
+        if (options.dumpTemplate) {
+          await context.template.dump(options.dumpTemplate);
           return;
         }
 
-        if (program.listProperties) {
+        if (options.listProperties) {
           console.log(
             JSON.stringify(
               removeSensibleValues(context.properties),
