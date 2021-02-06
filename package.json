@@ -22,11 +22,11 @@
   },
   "dependencies": {
     "@template-tools/template-sync": "^10.7.26",
-    "aggregation-repository-provider": "^2.9.29",
+    "aggregation-repository-provider": "^2.9.32",
     "bitbucket-repository-provider": "^3.7.88",
     "commander": "^7.0.0",
     "github-repository-provider": "^7.21.13",
-    "local-repository-provider": "^7.0.73",
+    "local-repository-provider": "^7.0.74",
     "remove-sensible-values": "^1.0.9"
   },
   "devDependencies": {
