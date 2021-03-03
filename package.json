@@ -26,7 +26,7 @@
     "bitbucket-repository-provider": "^3.7.91",
     "commander": "^7.0.0",
     "github-repository-provider": "^7.21.16",
-    "local-repository-provider": "^7.0.76",
+    "local-repository-provider": "^7.0.78",
     "remove-sensible-values": "^1.0.9"
   },
   "devDependencies": {
