@@ -55,7 +55,7 @@ program
     const logLevel = options.trace ? "trace" : options.debug ? "debug" : "info";
 
     try {
-      const provider = AggregationProvider.initialize(
+      const provider = await AggregationProvider.initialize(
         [GithubProvider, BitbucketProvider, LocalProvider],
         properties,
         process.env
