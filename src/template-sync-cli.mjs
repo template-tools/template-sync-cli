@@ -4,9 +4,6 @@ import { readFileSync } from "fs";
 import { readFile } from "fs/promises";
 import program from "commander";
 import { removeSensibleValues } from "remove-sensible-values";
-import GithubProvider from "github-repository-provider";
-import BitbucketProvider from "bitbucket-repository-provider";
-import LocalProvider from "local-repository-provider";
 import AggregationProvider from "aggregation-repository-provider";
 import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
@@ -49,25 +46,28 @@ program
     "template repository",
     value => (templates = templates.concat(value))
   )
-  .option("-u, --dump-template <directory>", "extract aggregated template entries")
-  .action(async (branches) => {
+  .option(
+    "-u, --dump-template <directory>",
+    "extract aggregated template entries"
+  )
+  .action(async branches => {
     const options = program.opts();
     const logLevel = options.trace ? "trace" : options.debug ? "debug" : "info";
 
     try {
       const provider = await AggregationProvider.initialize(
-        [GithubProvider, BitbucketProvider, LocalProvider],
+        [],
         properties,
         process.env
       );
 
-      if (program.listProviders) {
+      if (options.listProviders) {
         console.log(
-          Array.from(
-            provider.providers.map(
+          [
+            ...provider.providers.map(
               p => `${p.name}: ${JSON.stringify(removeSensibleValues(p))}`
             )
-          ).join("\n")
+          ].join("\n")
         );
 
         return;
@@ -85,7 +85,7 @@ program
           ...options,
           properties,
           logLevel
-          });
+        });
 
         await context.initialize();
 
