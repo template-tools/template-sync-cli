@@ -17,6 +17,7 @@ So by making changes to the template and applying npm-template-sync the target p
 Works with github and bitbucket.
 
 ```shell
+export AGGREGATION_FACTORY="github-repository-provider" # for github repos
 export GITHUB_TOKEN='token providing repositroy write access' # for github repos
 
 template-sync --template aTemplateGithubUser/aRepo myGithubUser/myRepo
@@ -25,6 +26,7 @@ template-sync --template aTemplateGithubUser/aRepo myGithubUser/myRepo
 Define (initial) properties to be used in the template
 
 ```shell
+export AGGREGATION_FACTORY="github-repository-provider" # for github repos
 export GITHUB_TOKEN='token providing repositroy write access' # for github repos
 
 template-sync --define "description=a very new fantastic module" -t myUser/myTemplate myUser/newModule#aBranch
