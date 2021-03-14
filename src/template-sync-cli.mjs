@@ -65,7 +65,7 @@ program
         console.log(
           [
             ...provider.providers.map(
-              p => `${p.name}: ${JSON.stringify(removeSensibleValues(p))}`
+              p => `${p.name}: ${JSON.stringify(removeSensibleValues(p.toJSON()))}`
             )
           ].join("\n")
         );
