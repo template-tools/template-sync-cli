@@ -31,6 +31,7 @@ jobs:
       - run: npm run cover --if-present
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          AGGREGATION_FACTORIES: github-repository-provider
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@master
         continue-on-error: true
