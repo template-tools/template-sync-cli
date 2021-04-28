@@ -106,11 +106,9 @@ program
         }
 
         for await (const pr of context.execute()) {
-          if (typeof pr === "string") {
-            console.log(pr);
-          } else {
-            console.log(`${pr.identifier} ${pr.title}`);
-          }
+          console.log(
+            typeof pr === "string" ? pr : `${pr.identifier} ${pr.title}`
+          );
         }
       }
     } catch (err) {
