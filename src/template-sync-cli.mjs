@@ -77,7 +77,12 @@ program
         const pkg = JSON.parse(
           await readFile("package.json", defaultEncodingOptions)
         );
-        branches.push(pkg.repository.url);
+        if(pkg.repository && pkg.repository.url) {
+          branches.push(pkg.repository.url);
+        }
+        else {
+          console.error("Unable to identify repository");
+        }
       }
 
       for (const branch of branches) {
