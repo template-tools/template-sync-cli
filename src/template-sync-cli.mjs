@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S node --trace-deprecation --trace-warnings
 
 import { readFileSync } from "fs";
 import { readFile } from "fs/promises";
