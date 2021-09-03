@@ -22,12 +22,12 @@
   },
   "dependencies": {
     "@template-tools/template-sync": "^10.8.43",
-    "aggregation-repository-provider": "^3.2.43",
+    "aggregation-repository-provider": "^3.2.44",
     "bitbucket-repository-provider": "^3.9.1",
     "commander": "^8.1.0",
-    "gitea-repository-provider": "^1.16.23",
-    "github-repository-provider": "^7.23.14",
-    "local-repository-provider": "^7.0.98",
+    "gitea-repository-provider": "^1.16.25",
+    "github-repository-provider": "^7.23.15",
+    "local-repository-provider": "^7.0.99",
     "remove-sensible-values": "^1.0.9"
   },
   "devDependencies": {
