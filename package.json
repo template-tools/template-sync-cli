@@ -27,7 +27,7 @@
     "commander": "^8.1.0",
     "gitea-repository-provider": "^1.16.32",
     "github-repository-provider": "^7.23.26",
-    "local-repository-provider": "^7.0.102",
+    "local-repository-provider": "^7.0.103",
     "remove-sensible-values": "^1.0.9"
   },
   "devDependencies": {
