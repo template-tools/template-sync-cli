@@ -26,7 +26,7 @@
     "bitbucket-repository-provider": "^3.9.5",
     "commander": "^8.1.0",
     "gitea-repository-provider": "^1.16.32",
-    "github-repository-provider": "^7.23.26",
+    "github-repository-provider": "^7.23.27",
     "local-repository-provider": "^7.0.103",
     "remove-sensible-values": "^1.0.9"
   },
