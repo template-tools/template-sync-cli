@@ -1,4 +1,3 @@
-[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@template-tools/sync-cli.svg)](https://www.npmjs.com/package/@template-tools/sync-cli)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![minified size](https://badgen.net/bundlephobia/min/@template-tools/sync-cli)](https://bundlephobia.com/result?p=@template-tools/sync-cli)
