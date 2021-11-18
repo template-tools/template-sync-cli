@@ -1,7 +1,7 @@
 import test from "ava";
-import execa from "execa";
+import { execa } from "execa";
 
-const nts = new URL("../src/template-sync-cli.mjs",import.meta.url).pathname;
+const nts = new URL("../src/template-sync-cli.mjs", import.meta.url).pathname;
 
 test("cli dryrun", async t => {
   const c = await execa(nts, ["--dry", "arlac77/config-expander"]);
