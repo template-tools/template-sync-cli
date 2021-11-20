@@ -23,11 +23,11 @@
   "dependencies": {
     "@template-tools/template-sync": "^10.8.52",
     "aggregation-repository-provider": "^3.2.54",
-    "bitbucket-repository-provider": "^3.9.7",
+    "bitbucket-repository-provider": "^3.9.8",
     "commander": "^8.1.0",
     "gitea-repository-provider": "^1.16.32",
     "github-repository-provider": "^7.23.30",
-    "local-repository-provider": "^7.0.104",
+    "local-repository-provider": "^7.0.105",
     "remove-sensible-values": "^1.0.9"
   },
   "devDependencies": {
