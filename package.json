@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@template-tools/template-sync": "^10.9.4",
-    "aggregation-repository-provider": "^4.0.10",
+    "aggregation-repository-provider": "^4.0.11",
     "bitbucket-repository-provider": "^3.10.1",
     "commander": "^8.1.0",
     "gitea-repository-provider": "^1.16.46",
