@@ -28,7 +28,7 @@
     "gitea-repository-provider": "^1.16.66",
     "github-repository-provider": "^7.25.21",
     "local-repository-provider": "^7.0.117",
-    "remove-sensible-values": "^1.0.9"
+    "remove-sensible-values": "^3.0.12"
   },
   "devDependencies": {
     "ava": "^4.0.1",
