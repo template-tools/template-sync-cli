@@ -2,7 +2,7 @@
 
 import { readFileSync } from "fs";
 import { readFile } from "fs/promises";
-import program from "commander";
+import { program } from "commander";
 import { removeSensibleValues } from "remove-sensible-values";
 import AggregationProvider from "aggregation-repository-provider";
 import { Context } from "@template-tools/template-sync";
