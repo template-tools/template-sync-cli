@@ -25,7 +25,7 @@
     "aggregation-repository-provider": "^4.0.45",
     "bitbucket-repository-provider": "^3.10.16",
     "commander": "^9.0.0",
-    "gitea-repository-provider": "^2.1.4",
+    "gitea-repository-provider": "^2.1.5",
     "github-repository-provider": "^7.25.39",
     "local-repository-provider": "^7.2.0",
     "remove-sensible-values": "^1.0.11"
