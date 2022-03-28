@@ -8,8 +8,8 @@ import AggregationProvider from "aggregation-repository-provider";
 import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
 
-process.on("uncaughtException", e => console.error(e));
-process.on("unhandledRejection", reason => console.error(reason));
+process.on("uncaughtException", console.error);
+process.on("unhandledRejection", console.error);
 
 const { version, description } = JSON.parse(
   readFileSync(
