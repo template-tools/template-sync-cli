@@ -1,6 +1,6 @@
 {
   "name": "@template-tools/sync-cli",
-  "version": "2.0.162",
+  "version": "2.0.163",
   "publishConfig": {
     "access": "public"
   },
@@ -21,7 +21,7 @@
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m tests/*.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp"
   },
   "dependencies": {
-    "@template-tools/template-sync": "^11.0.14",
+    "@template-tools/template-sync": "^11.0.15",
     "aggregation-repository-provider": "^4.0.46",
     "bitbucket-repository-provider": "^3.10.22",
     "commander": "^9.1.0",
