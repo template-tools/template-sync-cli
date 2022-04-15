@@ -24,7 +24,7 @@
     "@template-tools/template-sync": "^11.0.15",
     "aggregation-repository-provider": "^4.0.46",
     "bitbucket-repository-provider": "^3.10.22",
-    "commander": "^9.1.0",
+    "commander": "^9.2.0",
     "gitea-repository-provider": "^2.1.19",
     "github-repository-provider": "^7.26.5",
     "local-repository-provider": "^8.0.0",
