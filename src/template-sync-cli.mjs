@@ -1,6 +1,7 @@
 #!/usr/bin/env -S node --trace-deprecation --trace-warnings
 
 import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
 import { readFile } from "fs/promises";
 import { program } from "commander";
 import { removeSensibleValues } from "remove-sensible-values";
@@ -14,7 +15,7 @@ process.on("unhandledRejection", console.error);
 
 const { version, description } = JSON.parse(
   readFileSync(
-    new URL("../package.json", import.meta.url).pathname,
+    fileURLToPath(new URL("../package.json", import.meta.url)),
     defaultEncodingOptions
   )
 );
@@ -30,12 +31,17 @@ const properties = {
 
 let templates = [];
 
-Object.keys(defaultLogLevels).forEach(level => program.option(`--${level}`, `log level ${level}`));
+Object.keys(defaultLogLevels).forEach(level =>
+  program.option(`--${level}`, `log level ${level}`)
+);
 
 program
   .usage(description)
   .version(version)
-  .arguments("[branches...]", "branches where the templates schould be applied to")
+  .arguments(
+    "[branches...]",
+    "branches where the templates schould be applied to"
+  )
   .option("--dry", "do not create branch/pull request")
   .option("--create", "create repository if not present in provider")
   .option("--track", "track templates in package.json")
@@ -62,9 +68,9 @@ program
   .action(async branches => {
     const options = program.opts();
 
-    let logLevel = 'info';
+    let logLevel = "info";
     Object.keys(defaultLogLevels).forEach(level => {
-      if(options[level]) {
+      if (options[level]) {
         logLevel = level;
       }
     });
