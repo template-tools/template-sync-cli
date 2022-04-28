@@ -1,6 +1,6 @@
 {
   "name": "@template-tools/sync-cli",
-  "version": "2.1.11",
+  "version": "2.1.14",
   "publishConfig": {
     "access": "public"
   },
@@ -21,12 +21,12 @@
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m tests/*.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp"
   },
   "dependencies": {
-    "@template-tools/template-sync": "^11.0.15",
-    "aggregation-repository-provider": "^5.0.5",
+    "@template-tools/template-sync": "^11.0.16",
+    "aggregation-repository-provider": "^5.0.6",
     "bitbucket-repository-provider": "^4.1.4",
     "commander": "^9.2.0",
-    "gitea-repository-provider": "^2.1.30",
-    "github-repository-provider": "^7.26.20",
+    "gitea-repository-provider": "^2.1.31",
+    "github-repository-provider": "^7.26.21",
     "local-repository-provider": "^8.0.3",
     "remove-sensible-values": "^1.0.13"
   },
