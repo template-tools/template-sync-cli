@@ -1,6 +1,6 @@
 {
   "name": "@template-tools/sync-cli",
-  "version": "2.1.14",
+  "version": "0.0.0-semantic-release",
   "publishConfig": {
     "access": "public"
   },
