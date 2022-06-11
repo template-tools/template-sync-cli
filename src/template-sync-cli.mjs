@@ -1,14 +1,20 @@
 #!/usr/bin/env -S node --trace-deprecation --trace-warnings
 
-import { readFileSync } from "fs";
-import { fileURLToPath } from "url";
-import { readFile } from "fs/promises";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { readFile } from "node:fs/promises";
+import { mkdir } from "node:fs/promises";
+import { join } from "node:path";
+import { homedir } from "node:os";
 import { program } from "commander";
 import { removeSensibleValues } from "remove-sensible-values";
 import AggregationProvider from "aggregation-repository-provider";
 import { defaultLogLevels } from "loglevel-mixin";
 import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
+import { ETagCacheLevelDB } from "etag-cache-leveldb";
+import levelup from "levelup";
+import leveldown from "leveldown";
 
 process.on("uncaughtException", console.error);
 process.on("unhandledRejection", console.error);
@@ -19,6 +25,14 @@ const { version, description } = JSON.parse(
     defaultEncodingOptions
   )
 );
+
+async function createCache() {
+  const dir = join(homedir(), ".cache/repository-provider");
+  await mkdir(dir, { recursive: true });
+  const db = await levelup(leveldown(dir));
+  return new ETagCacheLevelDB(db);
+}
+
 
 const properties = {
   messageDestination: {
@@ -42,6 +56,7 @@ program
     "[branches...]",
     "branches where the templates schould be applied to"
   )
+  .option("--no-cache", "cache requests")
   .option("--dry", "do not create branch/pull request")
   .option("--create", "create repository if not present in provider")
   .option("--track", "track templates in package.json")
@@ -92,6 +107,11 @@ program
         );
 
         return;
+      }
+
+      if (options.cache) {
+        const cache = await createCache();
+        provider._providers.forEach(p => (p.cache = cache));
       }
 
       if (branches.length === 0 || branches[0] === ".") {
