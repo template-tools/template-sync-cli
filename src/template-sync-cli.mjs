@@ -57,6 +57,7 @@ program
     "branches where the templates schould be applied to"
   )
   .option("--no-cache", "cache requests")
+  .option("--statistics", "show cache statistics")
   .option("--dry", "do not create branch/pull request")
   .option("--create", "create repository if not present in provider")
   .option("--track", "track templates in package.json")
@@ -109,8 +110,9 @@ program
         return;
       }
 
+      let cache;
       if (options.cache) {
-        const cache = await createCache();
+        cache = await createCache();
         provider._providers.forEach(p => (p.cache = cache));
       }
 
@@ -155,6 +157,10 @@ program
             typeof pr === "string" ? pr : `${pr.identifier} ${pr.title}`
           );
         }
+
+        if (options.statistics) {
+          console.error(cache.statistics);
+        }      
       }
     } catch (err) {
       console.error(err);
