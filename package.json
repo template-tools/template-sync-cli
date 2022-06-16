@@ -25,7 +25,7 @@
     "aggregation-repository-provider": "^5.2.37",
     "bitbucket-repository-provider": "^4.2.11",
     "commander": "^9.3.0",
-    "etag-cache-leveldb": "^1.2.2",
+    "etag-cache-leveldb": "^1.2.3",
     "gitea-repository-provider": "^2.2.11",
     "github-repository-provider": "^7.30.13",
     "leveldown": "^6.1.1",
