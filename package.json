@@ -31,7 +31,7 @@
     "leveldown": "^6.1.1",
     "levelup": "^5.1.1",
     "local-repository-provider": "^8.0.15",
-    "remove-sensible-values": "^1.0.16"
+    "remove-sensible-values": "^1.1.0"
   },
   "devDependencies": {
     "ava": "^4.3.1",
