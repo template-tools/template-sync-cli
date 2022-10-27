@@ -17,7 +17,7 @@ So by making changes to the template and applying npm-template-sync the target p
 Works with github and bitbucket.
 
 ```shell
-export AGGREGATION_FACTORY="github-repository-provider" # for github repos
+export AGGREGATION_FACTORIES="github-repository-provider" # for github repos
 export GITHUB_TOKEN='token providing repositroy write access' # for github repos
 
 template-sync --template aTemplateGithubUser/aRepo myGithubUser/myRepo
@@ -26,7 +26,7 @@ template-sync --template aTemplateGithubUser/aRepo myGithubUser/myRepo
 Define (initial) properties to be used in the template
 
 ```shell
-export AGGREGATION_FACTORY="github-repository-provider" # for github repos
+export AGGREGATION_FACTORIES="github-repository-provider" # for github repos
 export GITHUB_TOKEN='token providing repositroy write access' # for github repos
 
 template-sync --define "description=a very new fantastic module" -t myUser/myTemplate myUser/newModule#aBranch
@@ -78,52 +78,56 @@ Merges contents from template branch into destination branch handling some speci
 
 ### Table of Contents
 
--   [Context](#context)
-    -   [Parameters](#parameters)
-    -   [Properties](#properties)
-    -   [execute](#execute)
-    -   [commits](#commits)
-    -   [executeBranch](#executebranch)
--   [sortedKeys](#sortedkeys)
--   [Package](#package)
-    -   [properties](#properties-1)
-        -   [Parameters](#parameters-1)
--   [Merger](#merger)
-    -   [properties](#properties-2)
-        -   [Parameters](#parameters-2)
-    -   [commits](#commits-1)
-        -   [Parameters](#parameters-3)
--   [Merger](#merger-1)
-    -   [Properties](#properties-3)
-    -   [properties](#properties-4)
-        -   [Parameters](#parameters-4)
-    -   [commits](#commits-2)
-        -   [Parameters](#parameters-5)
--   [EntryMerger](#entrymerger)
-    -   [Properties](#properties-5)
--   [Template](#template)
-    -   [Parameters](#parameters-6)
-    -   [Properties](#properties-6)
-    -   [entryMerger](#entrymerger-1)
-        -   [Parameters](#parameters-7)
-    -   [mergerFor](#mergerfor)
-        -   [Parameters](#parameters-8)
-    -   [\_templateFrom](#_templatefrom)
-        -   [Parameters](#parameters-9)
-    -   [updateUsedBy](#updateusedby)
-        -   [Parameters](#parameters-10)
-    -   [templateFor](#templatefor)
-        -   [Parameters](#parameters-11)
--   [ReplaceIfEmpty](#replaceifempty)
--   [Readme](#readme)
--   [MergeLineSet](#mergelineset)
--   [Replace](#replace)
--   [Skip](#skip)
--   [Delete](#delete)
--   [normalizeTemplateSources](#normalizetemplatesources)
-    -   [Parameters](#parameters-12)
--   [jspath](#jspath)
-    -   [Parameters](#parameters-13)
+- [API](#api)
+    - [Table of Contents](#table-of-contents)
+  - [Context](#context)
+    - [Parameters](#parameters)
+    - [Properties](#properties)
+    - [execute](#execute)
+    - [commits](#commits)
+    - [executeBranch](#executebranch)
+  - [sortedKeys](#sortedkeys)
+  - [Package](#package)
+    - [properties](#properties-1)
+      - [Parameters](#parameters-1)
+  - [Merger](#merger)
+    - [properties](#properties-2)
+      - [Parameters](#parameters-2)
+    - [commits](#commits-1)
+      - [Parameters](#parameters-3)
+  - [Merger](#merger-1)
+    - [Properties](#properties-3)
+    - [properties](#properties-4)
+      - [Parameters](#parameters-4)
+    - [commits](#commits-2)
+      - [Parameters](#parameters-5)
+  - [EntryMerger](#entrymerger)
+    - [Properties](#properties-5)
+  - [Template](#template)
+    - [Parameters](#parameters-6)
+    - [Properties](#properties-6)
+    - [entryMerger](#entrymerger-1)
+      - [Parameters](#parameters-7)
+    - [mergerFor](#mergerfor)
+      - [Parameters](#parameters-8)
+    - [\_templateFrom](#_templatefrom)
+      - [Parameters](#parameters-9)
+    - [updateUsedBy](#updateusedby)
+      - [Parameters](#parameters-10)
+    - [templateFor](#templatefor)
+      - [Parameters](#parameters-11)
+  - [ReplaceIfEmpty](#replaceifempty)
+  - [Readme](#readme)
+  - [MergeLineSet](#mergelineset)
+  - [Replace](#replace)
+  - [Skip](#skip)
+  - [Delete](#delete)
+  - [normalizeTemplateSources](#normalizetemplatesources)
+    - [Parameters](#parameters-12)
+  - [jspath](#jspath)
+    - [Parameters](#parameters-13)
+- [install](#install)
+- [license](#license)
 
 ## Context
 
