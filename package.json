@@ -30,7 +30,7 @@
     "github-repository-provider": "^7.33.3",
     "leveldown": "^6.1.1",
     "levelup": "^5.1.1",
-    "local-repository-provider": "^8.1.0",
+    "local-repository-provider": "^8.1.1",
     "remove-sensible-values": "^1.2.0"
   },
   "devDependencies": {
