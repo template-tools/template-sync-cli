@@ -3,18 +3,12 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { readFile } from "node:fs/promises";
-import { mkdir } from "node:fs/promises";
-import { join } from "node:path";
-import { homedir } from "node:os";
 import { program } from "commander";
 import { removeSensibleValues } from "remove-sensible-values";
-import AggregationProvider from "aggregation-repository-provider";
 import { defaultLogLevels } from "loglevel-mixin";
 import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
-import { ETagCacheLevelDB } from "etag-cache-leveldb";
-import levelup from "levelup";
-import leveldown from "leveldown";
+import { initializeRepositoryProvider } from "./setup-provider.mjs";
 
 process.on("uncaughtException", console.error);
 process.on("unhandledRejection", console.error);
@@ -26,22 +20,7 @@ const { version, description } = JSON.parse(
   )
 );
 
-async function createCache() {
-  const dir = join(homedir(), ".cache/repository-provider");
-  await mkdir(dir, { recursive: true });
-  const db = await levelup(leveldown(dir));
-  return new ETagCacheLevelDB(db);
-}
-
-
-const properties = {
-  messageDestination: {
-    trace: console.info,
-    info: console.info,
-    warn: console.warn,
-    error: console.error
-  }
-};
+const properties = {};
 
 let templates = [];
 
@@ -67,7 +46,6 @@ program
     (value, properties) => setProperty(properties, ...value.split(/=/)),
     properties
   )
-  .option("--list-providers", "list providers with options and exit")
   .option(
     "--list-properties",
     "list all properties (if given of the first branch) and exit"
@@ -92,29 +70,10 @@ program
     });
 
     try {
-      const provider = await AggregationProvider.initialize(
-        [],
-        properties,
-        process.env
+      const { provider } = await initializeRepositoryProvider(
+        program,
+        properties
       );
-
-      if (options.listProviders) {
-        console.log(
-          [
-            ...provider.providers.map(
-              p => `${p.name}: ${JSON.stringify(p.toJSON())}`
-            )
-          ].join("\n")
-        );
-
-        return;
-      }
-
-      let cache;
-      if (options.cache) {
-        cache = await createCache();
-        provider._providers.forEach(p => (p.cache = cache));
-      }
 
       if (branches.length === 0 || branches[0] === ".") {
         const pkg = JSON.parse(
@@ -160,7 +119,7 @@ program
 
         if (options.statistics) {
           console.error(cache.statistics);
-        }      
+        }
       }
     } catch (err) {
       console.error(err);
