@@ -22,11 +22,11 @@
   },
   "dependencies": {
     "@template-tools/template-sync": "^11.0.67",
-    "aggregation-repository-provider": "^5.3.7",
+    "aggregation-repository-provider": "^5.3.8",
     "bitbucket-repository-provider": "^4.4.15",
     "commander": "^9.4.1",
     "etag-cache-leveldb": "^1.4.0",
-    "gitea-repository-provider": "^2.4.10",
+    "gitea-repository-provider": "^2.4.11",
     "github-repository-provider": "^7.33.14",
     "leveldown": "^6.1.1",
     "levelup": "^5.1.1",
