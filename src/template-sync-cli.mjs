@@ -72,7 +72,8 @@ program
     try {
       const { provider } = await initializeRepositoryProvider(
         program,
-        properties
+        properties,
+        cache
       );
 
       if (branches.length === 0 || branches[0] === ".") {
@@ -117,7 +118,7 @@ program
           );
         }
 
-        if (options.statistics) {
+        if (options.statistics && cache) {
           console.error(cache.statistics);
         }
       }
