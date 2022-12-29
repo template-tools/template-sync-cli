@@ -9,9 +9,7 @@ import { defaultLogLevels } from "loglevel-mixin";
 import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
 import { initializeRepositoryProvider } from "./setup-provider.mjs";
-
-process.on("uncaughtException", console.error);
-process.on("unhandledRejection", console.error);
+import chalk from "chalk";
 
 const { version, description } = JSON.parse(
   readFileSync(
@@ -21,7 +19,6 @@ const { version, description } = JSON.parse(
 );
 
 const properties = {};
-
 let templates = [];
 
 Object.keys(defaultLogLevels).forEach(level =>
@@ -72,16 +69,17 @@ program
     try {
       const { provider, cache } = await initializeRepositoryProvider(
         program,
-        properties      );
+        properties
+      );
 
       if (branches.length === 0 || branches[0] === ".") {
         const pkg = JSON.parse(
           await readFile("package.json", defaultEncodingOptions)
         );
-        if (pkg.repository && pkg.repository.url) {
+        if (pkg?.repository?.url) {
           branches.push(pkg.repository.url);
         } else {
-          console.error("Unable to identify repository");
+          console.error(chalk.red("Unable to identify repository"));
         }
       }
 
@@ -112,7 +110,7 @@ program
 
         for await (const pr of context.execute()) {
           console.log(
-            typeof pr === "string" ? pr : `${pr.identifier} ${pr.title}`
+            typeof pr === "string" ? pr : chalk.green(`${pr.identifier} ${pr.title}`)
           );
         }
 
@@ -121,7 +119,7 @@ program
         }
       }
     } catch (err) {
-      console.error(err);
+      console.error(chalk.red(err));
       process.exit(-1);
     }
   })
