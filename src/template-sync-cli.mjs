@@ -70,11 +70,9 @@ program
     });
 
     try {
-      const { provider } = await initializeRepositoryProvider(
+      const { provider, cache } = await initializeRepositoryProvider(
         program,
-        properties,
-        cache
-      );
+        properties      );
 
       if (branches.length === 0 || branches[0] === ".") {
         const pkg = JSON.parse(
