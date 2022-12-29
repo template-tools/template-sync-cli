@@ -10,6 +10,7 @@ import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
 import { initializeRepositoryProvider } from "./setup-provider.mjs";
 import chalk from "chalk";
+import { stringify } from "node:querystring";
 
 const { version, description } = JSON.parse(
   readFileSync(
@@ -93,10 +94,10 @@ program
           log: (level, ...args) => {
             switch (level) {
               case "info":
-                console.log(chalk.gray(...args));
+                console.log(chalk.gray(JSON.stringify(args)));
                 break;
               case "error":
-                console.error(chalk.red(...args));
+                console.error(chalk.red(JSON.stringify(args)));
                 break;
               default:
                 console.log(...args);
