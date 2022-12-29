@@ -92,15 +92,25 @@ program
           properties,
           logLevel,
           log: (level, ...args) => {
+            let message = "";
+            if(typeof args[0] === 'object') {
+              if(args[0].repository) {
+              	message = args[0].repository.fullName + ':';
+              	delete args[0].repository;
+              }
+            }
+
+            message += JSON.stringify(args);
+            
             switch (level) {
               case "info":
-                console.log(chalk.gray(JSON.stringify(args)));
+                console.log(chalk.gray(message));
                 break;
               case "error":
-                console.error(chalk.red(JSON.stringify(args)));
+                console.error(chalk.red(message));
                 break;
               default:
-                console.log(...args);
+                console.log(message);
             }
           }
         });
