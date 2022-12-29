@@ -79,7 +79,9 @@ program
         if (pkg?.repository?.url) {
           branches.push(pkg.repository.url);
         } else {
-          console.error(chalk.red("Unable to identify repository from package.json"));
+          console.error(
+            chalk.red("Unable to identify repository from package.json")
+          );
         }
       }
 
@@ -87,7 +89,19 @@ program
         const context = new Context(provider, branch, {
           ...options,
           properties,
-          logLevel
+          logLevel,
+          log: (level, ...args) => {
+            switch (level) {
+              case "info":
+                console.log(chalk.gray(...args));
+                break;
+              case "error":
+                console.error(chalk.red(...args));
+                break;
+              default:
+                console.log(...args);
+            }
+          }
         });
 
         await context.initialize();
@@ -110,7 +124,9 @@ program
 
         for await (const pr of context.execute()) {
           console.log(
-            typeof pr === "string" ? pr : chalk.green(`${pr.identifier} ${pr.title}`)
+            typeof pr === "string"
+              ? pr
+              : chalk.green(`${pr.identifier} ${pr.title}`)
           );
         }
 
