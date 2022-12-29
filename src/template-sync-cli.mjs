@@ -127,7 +127,7 @@ program
           console.log(
             typeof pr === "string"
               ? pr
-              : chalk.green(`${pr.identifier} ${pr.title}`)
+              : (pr.empty ? chalk.gray : chalk.green)(`${pr.identifier} ${pr.title}`)
           );
         }
 
