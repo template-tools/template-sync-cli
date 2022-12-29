@@ -79,7 +79,7 @@ program
         if (pkg?.repository?.url) {
           branches.push(pkg.repository.url);
         } else {
-          console.error(chalk.red("Unable to identify repository"));
+          console.error(chalk.red("Unable to identify repository from package.json"));
         }
       }
 
