@@ -94,9 +94,9 @@ program
           log: (level, ...args) => {
             let message = "";
             if(typeof args[0] === 'object') {
-              if(args[0].repository) {
-              	message = args[0].repository.fullName + ':';
-              	delete args[0].repository;
+              if(args[0].branch) {
+              	message = args[0].branch.fullName + ':';
+              	delete args[0].branch;
               }
             }
 
