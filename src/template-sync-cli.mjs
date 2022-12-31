@@ -10,7 +10,6 @@ import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
 import { initializeRepositoryProvider } from "./setup-provider.mjs";
 import chalk from "chalk";
-import { stringify } from "node:querystring";
 
 const { version, description } = JSON.parse(
   readFileSync(
@@ -93,15 +92,15 @@ program
           logLevel,
           log: (level, ...args) => {
             let message = "";
-            if(typeof args[0] === 'object') {
-              if(args[0].branch) {
-              	message = args[0].branch.fullName + ':';
-              	delete args[0].branch;
+            if (typeof args[0] === "object") {
+              if (args[0].branch) {
+                message = args[0].branch.fullName + ":";
+                delete args[0].branch;
               }
             }
 
             message += JSON.stringify(args);
-            
+
             switch (level) {
               case "info":
                 console.log(chalk.gray(message));
@@ -137,7 +136,9 @@ program
           console.log(
             typeof pr === "string"
               ? pr
-              : (pr.empty ? chalk.gray : chalk.green)(`${pr.identifier} ${pr.title}`)
+              : (pr.empty ? chalk.gray : chalk.green)(
+                  `${pr.identifier} ${pr.title}`
+                )
           );
         }
 
