@@ -101,9 +101,15 @@ program
                 message += args[0].message;
                 delete args[0].message;
               }
+
+              if (Object.keys(args[0]).length === 0) {
+                args.shift();
+              }
             }
 
-            message += JSON.stringify(args);
+            if (args.length > 0) {
+              message += JSON.stringify(args);
+            }
 
             switch (level) {
               case "info":
