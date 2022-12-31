@@ -28,7 +28,7 @@
     "commander": "^9.4.1",
     "etag-cache-leveldb": "^1.4.1",
     "gitea-repository-provider": "^2.4.19",
-    "github-repository-provider": "^7.33.18",
+    "github-repository-provider": "^7.33.19",
     "leveldown": "^6.1.1",
     "levelup": "^5.1.1",
     "local-repository-provider": "^8.1.5",
