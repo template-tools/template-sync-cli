@@ -3,13 +3,13 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { readFile } from "node:fs/promises";
+import chalk from "chalk";
 import { program } from "commander";
 import { removeSensibleValues } from "remove-sensible-values";
 import { defaultLogLevels } from "loglevel-mixin";
 import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
-import { initializeRepositoryProvider } from "./setup-provider.mjs";
-import chalk from "chalk";
+import { initializeRepositoryProvider, initializeCommandLine } from "./setup-provider.mjs";
 
 const { version, description } = JSON.parse(
   readFileSync(
@@ -20,6 +20,8 @@ const { version, description } = JSON.parse(
 
 const properties = {};
 let templates = [];
+
+initializeCommandLine(program);
 
 Object.keys(defaultLogLevels).forEach(level =>
   program.option(`--${level}`, `log level ${level}`)
@@ -32,8 +34,6 @@ program
     "[branches...]",
     "branches where the templates schould be applied to"
   )
-  .option("--no-cache", "cache requests")
-  .option("--statistics", "show cache statistics")
   .option("--dry", "do not create branch/pull request")
   .option("--create", "create repository if not present in provider")
   .option("--track", "track templates in package.json")
