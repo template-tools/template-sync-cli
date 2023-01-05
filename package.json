@@ -21,7 +21,7 @@
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m tests/*-ava.mjs tests/*-ava-node.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp"
   },
   "dependencies": {
-    "@template-tools/template-sync": "^11.1.5",
+    "@template-tools/template-sync": "^11.1.6",
     "aggregation-repository-provider": "^5.3.20",
     "bitbucket-repository-provider": "^4.4.29",
     "chalk": "^5.2.0",
