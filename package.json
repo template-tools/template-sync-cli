@@ -32,7 +32,6 @@
     "leveldown": "^6.1.1",
     "levelup": "^5.1.1",
     "local-repository-provider": "^8.1.12",
-    "node-fetch": "^3.3.0",
     "remove-sensible-values": "^1.2.3"
   },
   "devDependencies": {
@@ -42,7 +41,7 @@
     "semantic-release": "^20.1.1"
   },
   "engines": {
-    "node": ">=18.12.1"
+    "node": ">=18.15.0"
   },
   "repository": {
     "type": "git",
