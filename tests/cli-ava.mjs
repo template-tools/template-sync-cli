@@ -3,7 +3,7 @@ import { execa } from "execa";
 
 const nts = new URL("../src/template-sync-cli.mjs", import.meta.url).pathname;
 
-test("cli dryrun", async t => {
+test.serial("cli dryrun", async t => {
   const c = await execa(nts, ["--dry", "arlac77/config-expander"]);
 
   //t.truthy(c.stdout.match(/\-|.+:.+/));
@@ -11,14 +11,10 @@ test("cli dryrun", async t => {
   t.is(c.exitCode, 0);
 });
 
-test.only("cli list properties", async t => {
+test.serial("cli list properties", async t => {
   const c = await execa(nts, ["--list-properties", "arlac77/config-expander"]);
   t.is(c.exitCode, 0);
 
   const out = JSON.parse(c.stdout);
   t.is(out.description, "Expands expressions in config files");
-
-  //t.truthy(c.stdout.match(/Expands expressions in config files/));
-
-  t.log(out);
 });
