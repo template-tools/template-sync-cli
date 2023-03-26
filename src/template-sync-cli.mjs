@@ -1,22 +1,14 @@
 #!/usr/bin/env -S node --trace-deprecation --trace-warnings
 
-import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import { readFile } from "node:fs/promises";
 import chalk from "chalk";
 import { program } from "commander";
+import pkg from "../package.json" assert { type: "json" };
 import { removeSensibleValues } from "remove-sensible-values";
 import { defaultLogLevels } from "loglevel-mixin";
 import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
 import { initializeRepositoryProvider, initializeCommandLine } from "./setup-provider.mjs";
-
-const { version, description } = JSON.parse(
-  readFileSync(
-    fileURLToPath(new URL("../package.json", import.meta.url)),
-    defaultEncodingOptions
-  )
-);
 
 const properties = {};
 let templates = [];
@@ -28,8 +20,8 @@ Object.keys(defaultLogLevels).forEach(level =>
 );
 
 program
-  .usage(description)
-  .version(version)
+  .usage(pkg.description)
+  .version(pkg.version)
   .arguments(
     "[branches...]",
     "branches where the templates schould be applied to"
