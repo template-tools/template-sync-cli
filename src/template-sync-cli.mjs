@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --trace-deprecation --trace-warnings
+#!/usr/bin/env -S node --no-warnings
 
 import { readFile } from "node:fs/promises";
 import chalk from "chalk";
@@ -99,10 +99,13 @@ program
               }
             }
 
-            if (args.length > 0) {
+            if (args.length > 1) {
               message += JSON.stringify(args);
             }
-
+            else if(args.length === 1) {
+              message += args[0];
+            }
+ 
             switch (level) {
               case "info":
                 console.log(chalk.gray(message));
