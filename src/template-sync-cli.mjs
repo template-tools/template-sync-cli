@@ -100,7 +100,7 @@ program
             }
 
             if (args.length > 1) {
-              message += JSON.stringify(args);
+              message += args.join(' ');
             }
             else if(args.length === 1) {
               message += args[0];
