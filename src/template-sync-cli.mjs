@@ -8,7 +8,10 @@ import { removeSensibleValues } from "remove-sensible-values";
 import { defaultLogLevels } from "loglevel-mixin";
 import { Context } from "@template-tools/template-sync";
 import { setProperty, defaultEncodingOptions } from "./util.mjs";
-import { initializeRepositoryProvider, initializeCommandLine } from "./setup-provider.mjs";
+import {
+  initializeRepositoryProvider,
+  initializeCommandLine
+} from "./setup-provider.mjs";
 
 const properties = {};
 let templates = [];
@@ -85,27 +88,23 @@ program
           log: (level, ...args) => {
             let message = "";
             if (typeof args[0] === "object") {
-              if (args[0].branch) {
-                message = args[0].branch + ": ";
-                delete args[0].branch;
-              }
               if (args[0].message) {
                 message += args[0].message;
                 delete args[0].message;
               }
 
-              if (Object.keys(args[0]).length === 0) {
-                args.shift();
+              for (const [k, v] of Object.entries(args[0])) {
+                message += ` ${k}=${v}`;
               }
+              args.shift();
             }
 
             if (args.length > 1) {
-              message += args.join(' ');
-            }
-            else if(args.length === 1) {
+              message += args.join(" ");
+            } else if (args.length === 1) {
               message += args[0];
             }
- 
+
             switch (level) {
               case "info":
                 console.log(chalk.gray(message));
