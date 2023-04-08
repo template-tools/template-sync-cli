@@ -88,8 +88,17 @@ program
           log: (level, ...args) => {
             let message = "";
             if (typeof args[0] === "object") {
+              if (args[0].branch) {
+                message = args[0].branch;
+                delete args[0].branch;
+              }
+
               if (args[0].message) {
-                message += args[0].message;
+                if (message.length) {
+                  message += " " + args[0].message;
+                } else {
+                  message = args[0].message;
+                }
                 delete args[0].message;
               }
 
