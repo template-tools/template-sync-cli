@@ -1,5 +1,4 @@
 #!/usr/bin/env -S node --no-warnings
-
 import { readFile } from "node:fs/promises";
 import chalk from "chalk";
 import { program } from "commander";
