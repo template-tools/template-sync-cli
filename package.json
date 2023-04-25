@@ -27,7 +27,7 @@
     "chalk": "^5.2.0",
     "commander": "^10.0.1",
     "etag-cache-leveldb": "^2.0.1",
-    "gitea-repository-provider": "^3.0.5",
+    "gitea-repository-provider": "^3.0.6",
     "github-repository-provider": "^8.0.11",
     "leveldown": "^6.1.1",
     "levelup": "^5.1.1",
