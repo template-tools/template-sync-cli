@@ -10,7 +10,7 @@ import { setProperty, defaultEncodingOptions } from "./util.mjs";
 import {
   initializeRepositoryProvider,
   initializeCommandLine
-} from "./setup-provider.mjs";
+} from "repository-provider-cli-support";
 
 const properties = {};
 let templates = [];
