@@ -1,4 +1,4 @@
-export const defaultEncodingOptions = { encoding: "utf8" };
+export const defaultEncodingOptions = "utf8";
 
 export function setProperty(properties, attributePath, value) {
   const m = attributePath.match(/^(\w+)\.(.*)/);
