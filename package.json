@@ -2,7 +2,8 @@
   "name": "@template-tools/sync-cli",
   "version": "0.0.0-semantic-release",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "description": "cli for @template-tools/template-sync",
   "contributors": [
