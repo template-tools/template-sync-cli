@@ -11,10 +11,6 @@ name: CI
 jobs:
   test-node:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version:
-          - 20.11.0
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: actions/setup-node@v4.0.2
