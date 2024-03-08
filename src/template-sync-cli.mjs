@@ -1,12 +1,12 @@
 #!/usr/bin/env -S node --no-warnings
-import { readFile } from "node:fs/promises";
 import chalk from "chalk";
 import { program } from "commander";
+import { readPackageUp } from "read-package-up";
 import pkg from "../package.json" assert { type: "json" };
 import { removeSensibleValues } from "remove-sensible-values";
 import { defaultLogLevels } from "loglevel-mixin";
 import { Context } from "@template-tools/template-sync";
-import { setProperty, defaultEncodingOptions } from "./util.mjs";
+import { setProperty } from "./util.mjs";
 import {
   initializeRepositoryProvider,
   initializeCommandLine
@@ -67,14 +67,16 @@ program
       );
 
       if (branches.length === 0 || branches[0] === ".") {
-        const pkg = JSON.parse(
-          await readFile("package.json", defaultEncodingOptions)
-        );
-        if (pkg?.repository?.url) {
-          branches.push(pkg.repository.url);
+        const pkgData = await readPackageUp();
+        if (pkgData?.packageJson?.repository?.url) {
+          branches.push(pkgData.packageJson.repository.url);
         } else {
           console.error(
-            chalk.red("Unable to identify repository from package.json")
+            chalk.red(
+              `Unable to identify repository from ${
+                pkgData?.path || "package.json"
+              }`
+            )
           );
         }
       }
