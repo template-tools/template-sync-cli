@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --no-warnings
+#!/usr/bin/env -S node --no-warnings --title template-sync
 import chalk from "chalk";
 import { program } from "commander";
 import { readPackageUp } from "read-package-up";
