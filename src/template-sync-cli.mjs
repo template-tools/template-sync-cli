@@ -2,7 +2,7 @@
 import chalk from "chalk";
 import { program } from "commander";
 import { readPackageUp } from "read-package-up";
-import pkg from "../package.json" assert { type: "json" };
+import pkg from "../package.json" with { type: "json" };
 import { removeSensibleValues } from "remove-sensible-values";
 import { defaultLogLevels } from "loglevel-mixin";
 import { Context } from "@template-tools/template-sync";
