@@ -81,7 +81,7 @@ program
         }
       }
 
-      for (const branch of branches) {
+      for await (const branch of provider.branches(branches)) {
         const context = new Context(provider, branch, {
           ...options,
           properties,
