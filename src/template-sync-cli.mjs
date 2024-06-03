@@ -1,4 +1,6 @@
 #!/usr/bin/env -S node --no-warnings --title template-sync
+import { join } from "node:path";
+import { readFile } from "node:fs/promises";
 import chalk from "chalk";
 import { program } from "commander";
 import { readPackageUp } from "read-package-up";
@@ -66,11 +68,27 @@ program
         properties
       );
 
-      if (branches.length === 0 || branches[0] === ".") {
-        const pkgData = await readPackageUp();
+      if (branches.length === 0 || branches[0][0] === ".") {
+        const dir = branches[0] || process.cwd;
+        const pkgData = await readPackageUp({cwd:dir});
         if (pkgData?.packageJson?.repository?.url) {
           branches.push(pkgData.packageJson.repository.url);
         } else {
+          try {
+          const cfg = await readFile(join(dir,'.git','config'),'utf8');
+          for(const line of cfg.split(/\n/)) {
+            let m;
+
+            if(m = line.match(/^\s*url\s*=\s*(.*)/)) {
+              branches.push(m[1]);
+              break;
+            }
+            }
+          }
+          catch(e) {
+            console.log(e);
+          }
+          if(branches.length === 0) {
           console.error(
             chalk.red(
               `Unable to identify repository from ${
@@ -78,6 +96,7 @@ program
               }`
             )
           );
+        }
         }
       }
 
