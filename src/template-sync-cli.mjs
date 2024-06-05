@@ -70,33 +70,32 @@ program
 
       if (branches.length === 0 || branches[0][0] === ".") {
         const dir = branches[0] || process.cwd;
-        const pkgData = await readPackageUp({cwd:dir});
+        const pkgData = await readPackageUp({ cwd: dir });
         if (pkgData?.packageJson?.repository?.url) {
           branches.push(pkgData.packageJson.repository.url);
         } else {
           try {
-          const cfg = await readFile(join(dir,'.git','config'),'utf8');
-          for(const line of cfg.split(/\n/)) {
-            let m;
+            const cfg = await readFile(join(dir, ".git", "config"), "utf8");
+            for (const line of cfg.split(/\n/)) {
+              let m;
 
-            if(m = line.match(/^\s*url\s*=\s*(.*)/)) {
-              branches.push(m[1]);
-              break;
+              if ((m = line.match(/^\s*url\s*=\s*(.*)/))) {
+                branches.push(m[1]);
+                break;
+              }
             }
-            }
-          }
-          catch(e) {
+          } catch (e) {
             console.log(e);
           }
-          if(branches.length === 0) {
-          console.error(
-            chalk.red(
-              `Unable to identify repository from ${
-                pkgData?.path || "package.json"
-              }`
-            )
-          );
-        }
+          if (branches.length === 0) {
+            console.error(
+              chalk.red(
+                `Unable to identify repository from ${
+                  pkgData?.path || "package.json"
+                }`
+              )
+            );
+          }
         }
       }
 
