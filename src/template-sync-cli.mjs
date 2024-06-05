@@ -1,6 +1,4 @@
 #!/usr/bin/env -S node --no-warnings --title template-sync
-import { join } from "node:path";
-import { readFile } from "node:fs/promises";
 import chalk from "chalk";
 import { program } from "commander";
 import { readPackageUp } from "read-package-up";
@@ -11,7 +9,8 @@ import { Context } from "@template-tools/template-sync";
 import { setProperty } from "./util.mjs";
 import {
   initializeRepositoryProvider,
-  initializeCommandLine
+  initializeCommandLine,
+  repositoryUrl
 } from "repository-provider-cli-support";
 
 const properties = {};
@@ -26,7 +25,7 @@ Object.keys(defaultLogLevels).forEach(level =>
 program
   .usage(pkg.description)
   .version(pkg.version)
-  .arguments(
+  .argument(
     "[branches...]",
     "branches where the templates schould be applied to"
   )
@@ -75,15 +74,7 @@ program
           branches.push(pkgData.packageJson.repository.url);
         } else {
           try {
-            const cfg = await readFile(join(dir, ".git", "config"), "utf8");
-            for (const line of cfg.split(/\n/)) {
-              let m;
-
-              if ((m = line.match(/^\s*url\s*=\s*(.*)/))) {
-                branches.push(m[1]);
-                break;
-              }
-            }
+            branches.push(await repositoryUrl(dir));
           } catch (e) {
             console.log(e);
           }
