@@ -68,13 +68,13 @@ program
       );
 
       if (branches.length === 0 || branches[0][0] === ".") {
-        const dir = branches[0] || process.cwd;
-        const pkgData = await readPackageUp({ cwd: dir });
+        const cwd = branches[0] || process.cwd;
+        const pkgData = await readPackageUp({ cwd });
         if (pkgData?.packageJson?.repository?.url) {
           branches.push(pkgData.packageJson.repository.url);
         } else {
           try {
-            branches.push(await repositoryUrl(dir));
+            branches.push(await repositoryUrl(cwd));
           } catch (e) {
             console.log(e);
           }
