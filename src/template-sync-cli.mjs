@@ -68,10 +68,11 @@ program
       );
 
       if (branches.length === 0 || branches[0][0] === ".") {
-        const cwd = branches[0] || process.cwd;
+        const cwd = branches[0] || process.cwd();
         const pkgData = await readPackageUp({ cwd });
-        if (pkgData?.packageJson?.repository?.url) {
-          branches.push(pkgData.packageJson.repository.url);
+        const url = pkgData?.packageJson?.repository?.url;
+        if (url) {
+          branches[0] = url;
         } else {
           try {
             branches.push(await repositoryUrl(cwd));
