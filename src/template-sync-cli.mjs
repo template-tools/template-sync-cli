@@ -39,13 +39,17 @@ program
     properties
   )
   .option(
-    "--list-properties",
-    "list all properties (if given of the first branch) and exit"
+    "-p, --pull-request-branch <identifier>",
+    "name of the PR branch to use"
   )
   .option(
     "-t, --template <identifier>",
     "template repository to be assigned (or removed if preceeded with '-')",
     value => (templates = templates.concat(value))
+  )
+  .option(
+    "--list-properties",
+    "list all properties (if given of the first branch) and exit"
   )
   .option(
     "-u, --dump-template <directory>",
