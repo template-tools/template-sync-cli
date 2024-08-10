@@ -1,10 +1,11 @@
 name: Update package lock
 on:
-  schedule:
-    - cron: 13 8 * * 6
   push:
     paths:
       - package.json
+  schedule:
+    - cron: 13 8 * * 6
+  workflow_dispatch:
 jobs:
   update_package_lock:
     runs-on: ubuntu-latest
@@ -15,8 +16,10 @@ jobs:
         browser:
           - chrome
     steps:
-      - uses: actions/checkout@v4.1.7
-      - uses: actions/setup-node@v4.0.3
+      - name: checkout
+        uses: actions/checkout@v4.1.7
+      - name: prepare node
+        uses: actions/setup-node@v4.0.3
         with:
           node-version: ${{ matrix.node-version }}
       - run: rm package-lock.json
