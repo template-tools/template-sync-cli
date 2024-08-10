@@ -73,11 +73,6 @@ jobs:
           node-version: 22.6.0
           cache: npm
           cache-dependency-path: package-lock.json
-      - run: npx semantic-release
-        env:
-          CI: "true"
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   finish:
     needs:
       - test-node
