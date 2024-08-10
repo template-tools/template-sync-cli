@@ -19,6 +19,10 @@ jobs:
       - uses: actions/setup-node@v4.0.3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: prepare node
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: rm package-lock.json
       - run: npx playwright install
       - run: npm install-test
@@ -34,3 +38,5 @@ jobs:
           branch: package-lock
           labels: npm
           commit-message: "chore(deps): lock"
+      - name: checkout
+        uses: actions/checkout@v4.1.7
