@@ -22,12 +22,16 @@ jobs:
         uses: actions/setup-node@v4.0.3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: rm package-lock.json
-      - run: npx playwright install
-      - run: npm install-test
+      - name: remove lock
+        run: rm package-lock.json
+      - name: install playwright
+        run: npx playwright install
+      - name: test
+        run: npm install-test
         env:
           BROWSER: ${{ matrix.browser }}
-      - uses: gr2m/create-or-update-pull-request-action@v1
+      - name: create pull request
+        uses: gr2m/create-or-update-pull-request-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
