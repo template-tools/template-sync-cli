@@ -18,15 +18,18 @@ jobs:
         node-version:
           - 22.6.0
     steps:
-      - uses: actions/checkout@v4.1.7
-      - uses: actions/setup-node@v4.0.3
+      - name: checkout
+        uses: actions/checkout@v4.1.7
+      - name: prepare node
+        uses: actions/setup-node@v4.0.3
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-          cache-dependency-path: package-lock.json
-      - name: checkout
+          cache-dependency-path: "package-lock.json"
+      - name: install
         run: npm ci
-      - run: npm run cover --if-present
+      - name: test and coverage
+        run: npm run cover --if-present
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           AGGREGATION_FACTORIES: github-repository-provider
