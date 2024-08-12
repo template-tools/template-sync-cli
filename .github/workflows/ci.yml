@@ -62,7 +62,8 @@ jobs:
         - name: install
           run: npm ci
         - name: release
-          run: npx semantic-release
+          name: release
+        run: npx semantic-release
           env:
             CI: 'true'
             NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
