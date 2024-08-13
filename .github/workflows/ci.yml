@@ -19,6 +19,7 @@ jobs:
           - 22.6.0
     steps:
       - name: checkout
+        name: checkout
         uses: actions/checkout@v4.1.7
       - name: prepare node
         uses: actions/setup-node@v4.0.3
@@ -52,7 +53,8 @@ jobs:
       id-token: write
     steps:
         - name: checkout
-          uses: actions/checkout@v4.1.7
+          name: checkout
+        uses: actions/checkout@v4.1.7
         - name: prepare node
           uses: actions/setup-node@v4.0.3
           with:
