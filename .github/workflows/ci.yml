@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-          cache-dependency-path: "package-lock.json"
+          cache-dependency-path: package-lock.json
       - name: install
         run: npm ci
       - name: test and coverage
@@ -41,6 +41,7 @@ jobs:
           flag-name: run-${{ matrix.test_number }}
           path-to-lcov: build/coverage/lcov.info
           parallel: true
+      - run: npm run cover --if-present
   release:
     needs:
       - test-node
@@ -51,22 +52,22 @@ jobs:
       pull-requests: write
       id-token: write
     steps:
-        - name: checkout
-          uses: actions/checkout@v4.1.7
-        - name: prepare node
-          uses: actions/setup-node@v4.0.3
-          with:
-            node-version: 22.6.0
-            cache: npm
-            cache-dependency-path: 'package-lock.json'
-        - name: install
-          run: npm ci
-        - name: release
-          run: npx semantic-release
-          env:
-            CI: 'true'
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: checkout
+        uses: actions/checkout@v4.1.7
+      - name: prepare node
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: 22.6.0
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: install
+        run: npm ci
+      - name: release
+        run: npx semantic-release
+        env:
+          CI: "true"
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   finish:
     needs:
       - test-node
