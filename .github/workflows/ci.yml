@@ -30,6 +30,7 @@ jobs:
       - name: install
         run: npm ci
       - name: test and coverage
+        name: test and coverage
         run: npm run cover --if-present
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
