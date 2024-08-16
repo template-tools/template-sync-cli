@@ -21,7 +21,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4.1.7
       - name: prepare node
-        name: prepare node
         uses: actions/setup-node@v4.0.3
         with:
           node-version: ${{ matrix.node-version }}
@@ -55,7 +54,6 @@ jobs:
         - name: checkout
           uses: actions/checkout@v4.1.7
         - name: prepare node
-          name: prepare node
         uses: actions/setup-node@v4.0.3
           with:
             node-version: 22.6.0
