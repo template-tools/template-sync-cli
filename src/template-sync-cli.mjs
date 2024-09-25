@@ -81,7 +81,9 @@ program
           try {
             branches.push(await repositoryUrl(cwd));
           } catch (e) {
-            console.log(e);
+            if(e.code !== "ENOENT") {
+              console.log(e);
+            }
           }
           if (branches.length === 0) {
             console.error(
