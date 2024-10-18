@@ -76,13 +76,18 @@ program
         const pkgData = await readPackageUp({ cwd });
         const url = pkgData?.packageJson?.repository?.url;
         if (url) {
-          branches[0] = url;
+          if(branches[0]) {
+            branches[0] = url;
+          }
+          else {
+            branches.push(url);
+          }
         } else {
           try {
             branches.push(await repositoryUrl(cwd));
           } catch (e) {
             if(e.code !== "ENOENT") {
-              console.log(e);
+              console.log(chalk.red(e));
             }
           }
           if (branches.length === 0) {
