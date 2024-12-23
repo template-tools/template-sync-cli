@@ -28,7 +28,7 @@
     "@template-tools/template-sync": "^14.3.0",
     "aggregation-repository-provider": "^7.0.4",
     "bitbucket-repository-provider": "^6.0.29",
-    "chalk": "^5.4.0",
+    "chalk": "^5.4.1",
     "commander": "^12.1.0",
     "etag-cache-leveldb": "^2.1.7",
     "gitea-repository-provider": "^4.2.5",
