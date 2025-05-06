@@ -26,11 +26,11 @@
   },
   "dependencies": {
     "@template-tools/template-sync": "^14.3.26",
-    "aggregation-repository-provider": "^7.0.7",
+    "aggregation-repository-provider": "^7.0.8",
     "bitbucket-repository-provider": "^6.0.32",
     "chalk": "^5.4.1",
     "commander": "^13.1.0",
-    "etag-cache-leveldb": "^2.1.12",
+    "etag-cache-leveldb": "^2.1.13",
     "gitea-repository-provider": "^4.2.8",
     "github-repository-provider": "^9.1.4",
     "leveldown": "^6.1.1",
