@@ -25,14 +25,14 @@
     "lint:docs": "documentation lint ./src**/*.mjs"
   },
   "dependencies": {
-    "@template-tools/template-sync": "^14.3.26",
+    "@template-tools/template-sync": "^14.3.28",
     "aggregation-repository-provider": "^7.0.11",
     "bitbucket-repository-provider": "^6.1.1",
     "chalk": "^5.4.1",
     "commander": "^13.1.0",
     "etag-cache-leveldb": "^2.1.14",
-    "gitea-repository-provider": "^4.2.13",
-    "github-repository-provider": "^9.2.1",
+    "gitea-repository-provider": "^4.2.14",
+    "github-repository-provider": "^9.2.3",
     "leveldown": "^6.1.1",
     "levelup": "^5.1.1",
     "local-repository-provider": "^9.1.2",
