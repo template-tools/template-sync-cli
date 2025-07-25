@@ -27,7 +27,7 @@
   "dependencies": {
     "@template-tools/template-sync": "^14.3.29",
     "aggregation-repository-provider": "^7.0.34",
-    "bitbucket-repository-provider": "^6.2.2",
+    "bitbucket-repository-provider": "^6.2.3",
     "chalk": "^5.4.1",
     "commander": "^14.0.0",
     "etag-cache-leveldb": "^2.1.15",
