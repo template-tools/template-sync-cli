@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@template-tools/template-sync": "^14.3.29",
-    "aggregation-repository-provider": "^7.0.38",
+    "aggregation-repository-provider": "^7.0.39",
     "bitbucket-repository-provider": "^6.2.9",
     "chalk": "^5.5.0",
     "commander": "^14.0.0",
