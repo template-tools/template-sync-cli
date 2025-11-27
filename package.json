@@ -13,7 +13,7 @@
       "email": "markus.felten@gmx.de"
     }
   ],
-  "license": "BSD-2-Clause",
+  "license": "0BSD",
   "bin": {
     "template-sync": "./src/template-sync-cli.mjs"
   },
@@ -58,7 +58,7 @@
   "bugs": {
     "url": "https://github.com/template-tools/template-sync-cli/issues"
   },
-  "homepage": "https://github.com/template-tools/template-sync-cli#readme",
+  "homepage": "",
   "template": {
     "inheritFrom": [
       "arlac77/template-arlac77-github",
