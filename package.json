@@ -39,7 +39,7 @@
     "local-repository-provider": "^10.0.0",
     "read-package-up": "^12.0.0",
     "remove-sensible-values": "^1.3.2",
-    "repository-provider-cli-support": "^2.2.55"
+    "repository-provider-cli-support": "^3.0.0"
   },
   "devDependencies": {
     "ava": "^6.4.1",
