@@ -26,7 +26,7 @@
     "lint:docs": "documentation lint ./src**/*.mjs"
   },
   "dependencies": {
-    "@template-tools/template-sync": "^14.3.40",
+    "@template-tools/template-sync": "^14.3.41",
     "aggregation-repository-provider": "^7.0.52",
     "bitbucket-repository-provider": "^7.0.12",
     "chalk": "^5.6.2",
