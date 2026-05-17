@@ -182,7 +182,6 @@ program
         }
       }
     } catch (err) {
-      console.error(err);
       console.error(chalk.red(err));
       process.exit(-1);
     }
