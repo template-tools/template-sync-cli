@@ -5,7 +5,7 @@
     "access": "public",
     "provenance": true
   },
-  "packageManager": "npm@11.6.4+sha512.1118cab46a05a50aee6bff5b1b4fa1df18afff89d57465620a3518035026955db87c5bdf9d207b07b7487d99f2490d450cb774655ad63ec2cba7bf1d0ad25d45",
+  "packageManager": "npm@11.13.0",
   "description": "cli for @template-tools/template-sync",
   "contributors": [
     {
@@ -47,6 +47,11 @@
     "documentation": "^14.0.3",
     "execa": "^9.6.1",
     "semantic-release": "^25.0.3"
+  },
+  "overrides": {
+    "c8": {
+      "yargs": "^18.0.0"
+    }
   },
   "engines": {
     "node": ">=26.1.0"
