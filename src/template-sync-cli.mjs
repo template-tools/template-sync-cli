@@ -1,5 +1,5 @@
 #!/usr/bin/env -S node --no-warnings --title template-sync
-import chalk from "chalk";
+import { styleText } from "node:util";
 import { program } from "commander";
 import { readPackageUp } from "read-package-up";
 import pkg from "../package.json" with { type: "json" };
@@ -76,23 +76,23 @@ program
         const pkgData = await readPackageUp({ cwd });
         const url = pkgData?.packageJson?.repository?.url;
         if (url) {
-          if(branches[0]) {
+          if (branches[0]) {
             branches[0] = url;
-          }
-          else {
+          } else {
             branches.push(url);
           }
         } else {
           try {
             branches.push(await repositoryUrl(cwd));
           } catch (e) {
-            if(e.code !== "ENOENT") {
-              console.log(chalk.red(e));
+            if (e.code !== "ENOENT") {
+              console.error(styleText("red", e));
             }
           }
           if (branches.length === 0) {
             console.error(
-              chalk.red(
+              styleText(
+                "red",
                 `Unable to identify repository from ${
                   pkgData?.path || "package.json"
                 }`
@@ -138,10 +138,10 @@ program
 
             switch (level) {
               case "info":
-                console.log(chalk.gray(message));
+                console.log(styleText("gray", message));
                 break;
               case "error":
-                console.error(chalk.red(message));
+                console.error(styleText("red", message));
                 break;
               default:
                 console.log(message);
@@ -171,7 +171,8 @@ program
           console.log(
             typeof pr === "string"
               ? pr
-              : (pr.empty ? chalk.gray : chalk.green)(
+              : styleText(
+                  pr.empty ? "gray" : "green",
                   `${pr.identifier} ${pr.title}`
                 )
           );
@@ -182,7 +183,7 @@ program
         }
       }
     } catch (err) {
-      console.error(chalk.red(err));
+      console.error(styleText("red", err));
       process.exit(-1);
     }
   })
