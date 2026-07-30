@@ -33,7 +33,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           AGGREGATION_FACTORIES: github-repository-provider
       - name: coveralls
-        uses: coverallsapp/github-action@v2
+        uses: coverallsapp/github-action@v2.3.8
         continue-on-error: true
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
